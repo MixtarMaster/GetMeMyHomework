@@ -1,0 +1,13 @@
+{
+    "name": "web-app-ecole-ecoledirecte",
+    "version": "0.1.2",
+    "main": "app.js",
+    "author": "Miixtar",
+    "private": "true",
+    "description": "simple web app to mail to you your homework and what teachers put as 'contenue de séance' at chosen dates",
+    "dependencies": {
+        "ecoledirecte.js": "^0.27.0",
+        "node-schedule": "^2.0.0",
+        "nodemailer": "^6.6.2"
+    }
+}
