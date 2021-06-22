@@ -50,12 +50,12 @@ async function doTheWork() {
     doneDuringTheLessonHtml += "<h3>" + homework[i].subject.name + "</h3>";
     doneDuringTheLessonText += homework[i].subject.name + ":";
 
-    if (homework[i].job != undefined) {
+    if (homework[i].job !== undefined) {
       //some have no "job" object
       toBeDoneHtml += homework[i].job.content.html;
       toBeDoneText += homework[i].job.content.text;
     }
-    if (homework[i].contenuDeSeance != undefined) {
+    if (homework[i].contenuDeSeance !== undefined) {
       //some have no "contenue de séance"
       doneDuringTheLessonHtml += homework[i].contenuDeSeance.content.html;
       doneDuringTheLessonText += homework[i].contenuDeSeance.content.text;
@@ -133,7 +133,7 @@ async function doTheWork() {
 
 let scheduleHour = settings.scheduling.hour;
 let scheduleMinutes = settings.scheduling.minute;
-if (scheduleMinutes.length == 1) {
+if (scheduleMinutes.length === 1) {
   scheduleMinutes = "0" + scheduleMinutes;
 }
 
