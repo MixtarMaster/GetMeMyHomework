@@ -9,5 +9,8 @@
         "ecoledirecte.js": "^0.27.0",
         "node-schedule": "^2.0.0",
         "nodemailer": "^6.6.2"
+    },
+    "devDependencies": {
+        "prettier": "^2.3.1"
     }
 }
