@@ -1,0 +1,26 @@
+{
+    "ecoleDirecte": {
+        "user": "",
+        "pass": ""
+    },
+    "daMail": {
+        "from": "",
+        "to": "",
+        "subject": ""
+    },
+    
+    "transporterInformation": {
+        "host": "",
+        "port": 0,
+        "secure": false,
+        "auth": {
+            "user": "",
+            "pass": ""
+        }
+    },
+
+    "scheduling": {
+        "hour": "",
+        "minute": ""
+    }
+}
