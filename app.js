@@ -22,7 +22,7 @@ async function doTheWork() {
   let hour = now.getHours();
   let minute = now.getMinutes();
 
-  var today = year + "-" + month + "-" + date;
+  let today = year + "-" + month + "-" + date;
 
   // Create a new Session.
   const session = new ec.Session(
@@ -38,13 +38,13 @@ async function doTheWork() {
   const homework = await account.getHomework({ dates: today });
 
   //setting up both vars of content
-  var toBeDoneHtml = "";
-  var toBeDoneText = "";
-  var doneDuringTheLessonHtml = "";
-  var doneDuringTheLessonText = "";
+  let toBeDoneHtml = "";
+  let toBeDoneText = "";
+  let doneDuringTheLessonHtml = "";
+  let doneDuringTheLessonText = "";
 
   //getting the content and putting it in the previously created vars
-  for (var i = 0; i < homeworkLength; i++) {
+  for (let i = 0; i < homeworkLength; i++) {
     toBeDoneText += homework[i].subject.name + ":";
     toBeDoneHtml += "<h3>" + homework[i].subject.name + "</h3>";
     doneDuringTheLessonHtml += "<h3>" + homework[i].subject.name + "</h3>";
@@ -66,7 +66,7 @@ async function doTheWork() {
 
   // ---- full message to be mailed setup ----
 
-  var daMail = {
+  const daMail = {
     from: settings.daMail.from,
     to: settings.daMail.to,
     subject: settings.daMail.subject,
