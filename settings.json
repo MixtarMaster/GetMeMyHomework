@@ -20,7 +20,7 @@
     },
 
     "scheduling": {
-        "hour": "",
-        "minute": ""
+        "hour": 0,
+        "minute": 0
     }
 }
