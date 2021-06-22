@@ -1,6 +1,6 @@
 # GetMeMyHomework
 
-This is an app that fetches your daily homework and what teachers added to "contenue de séances" from "EcoleDirecte". 
+This is an app that fetches your daily homework and what teachers added to "contenue de séances" from "EcoleDirecte".
 
 ## Context
 
@@ -9,18 +9,20 @@ EcoleDirecte is a website/app used by some french schools to ease communication 
 ## Instalation
 
 Just clone the repo, don't forget to install dependencies with :
+
 ```bash
 npm install
 ```
 
-You will need to use a service to send emails through, I personnaly use [mailjet](https://www.mailjet.com/) and a [protonmail](https://protonmail.com) adress as the sender but you can use any you like.  
+You will need to use a service to send emails through, I personnaly use [mailjet](https://www.mailjet.com/) and a [protonmail](https://protonmail.com) adress as the sender but you can use any you like.
 
 **Note**: Most free services will default to your spam folder on the receiver side.
 
 ## Usage
 
 Fill in the [settings.json](./settings.json) file with the relivent information.
-Then run 
+Then run
+
 ```bash
 node app.js
 ```

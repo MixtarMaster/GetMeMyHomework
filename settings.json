@@ -1,26 +1,26 @@
 {
-    "ecoleDirecte": {
-        "user": "",
-        "pass": ""
-    },
-    "daMail": {
-        "from": "",
-        "to": "",
-        "subject": ""
-    },
-    
-    "transporterInformation": {
-        "host": "",
-        "port": 0,
-        "secure": false,
-        "auth": {
-            "user": "",
-            "pass": ""
-        }
-    },
+  "ecoleDirecte": {
+    "user": "",
+    "pass": ""
+  },
+  "daMail": {
+    "from": "",
+    "to": "",
+    "subject": ""
+  },
 
-    "scheduling": {
-        "hour": 0,
-        "minute": 0
+  "transporterInformation": {
+    "host": "",
+    "port": 0,
+    "secure": false,
+    "auth": {
+      "user": "",
+      "pass": ""
     }
+  },
+
+  "scheduling": {
+    "hour": 0,
+    "minute": 0
+  }
 }
