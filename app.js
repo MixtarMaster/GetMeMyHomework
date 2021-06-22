@@ -6,22 +6,21 @@ const nodemailer = require("nodemailer");
 const fs = require("fs");
 
 //-------------- Taking settings into account -------------------
-let rawSettingsData = fs.readFileSync("settings.json");
-let settings = JSON.parse(rawSettingsData);
+const settings = JSON.parse(fs.readFileSync("settings.json"));
 
-function doTheWork() {
+async function doTheWork() {
   //putting the code in a function for scheduling
   // --------------- Ecole directe side setup ----------------
 
   //set up "today" var
-  let date_ob = new Date();
+  let now = new Date();
 
-  let date = ("0" + date_ob.getDate()).slice(-2);
-  let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
-  let year = date_ob.getFullYear();
+  let date = ("0" + now.getDate()).slice(-2);
+  let month = ("0" + (now.getMonth() + 1)).slice(-2);
+  let year = now.getFullYear();
 
-  let hour = date_ob.getHours();
-  let minute = date_ob.getMinutes();
+  let hour = now.getHours();
+  let minute = now.getMinutes();
 
   var today = year + "-" + month + "-" + date;
 
@@ -31,25 +30,12 @@ function doTheWork() {
     settings.ecoleDirecte.pass
   );
 
-  // Bring your session to life!
-  const account = async () => {
-    await session.login().catch((err) => {
-      console.error("This login did not go well.");
-    });
-  };
+  const account = await session.login();
 
   console.log("EcoleDirecte session open and up!");
 
   // Get the homework due for a specific date as a simplified array + at t
-  const homework = async () => {
-    await account.getHomework({ dates: today });
-  };
-
-  // No homework.length, defining it
-  var homeworkLength = 0;
-  while (homework[homeworkLength] != undefined) {
-    homeworkLength += 1;
-  }
+  const homework = await account.getHomework({ dates: today });
 
   //setting up both vars of content
   var toBeDoneHtml = "";
