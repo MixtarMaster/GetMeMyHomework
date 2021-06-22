@@ -31,7 +31,7 @@ async function doTheWork() {
   );
 
   const account = await session.login();
-
+  if (account.type !== "student") throw new Error("Not a student");
   console.log("EcoleDirecte session open and up!");
 
   // Get the homework due for a specific date as a simplified array + at t
