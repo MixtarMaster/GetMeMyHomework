@@ -19,7 +19,11 @@ You will need to use a service to send emails through, I personnaly use [mailjet
 
 ## Usage
 
-Fill in the [settings.json](./settings.json) file with the relivent information
+Fill in the [settings.json](./settings.json) file with the relivent information.
+Then run 
+```bash
+node app.js
+```
 
 ### "EcoleDirecte"
 
