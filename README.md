@@ -31,7 +31,7 @@ Write in your email adress (user) and password (pass) used to connect to your Ec
 
 ### "Da Mail"
 
-Put in the sender email adress (from) and the receipient (to)
+Put in the sender email adress (from) and the receipient (to).
 
 ### Transporter information
 
@@ -43,7 +43,7 @@ Please use 24 hour format.
 
 ## Known bugs
 
-If you don't fill in the settings.json file as needed, the code will break, no securities in place.
+None known, please tell if you find any!
 
 ## License
 
