@@ -41,10 +41,6 @@ Fill in the information given by your chosen service, they should provide with a
 
 Please use 24 hour format.
 
-## Contributing
-
-Pull requests are welcome, if you have anything you think could be added.
-
 ## Known bugs
 
 If you don't fill in the settings.json file as needed, the code will break, no securities in place.
@@ -52,6 +48,16 @@ If you don't fill in the settings.json file as needed, the code will break, no s
 ## License
 
 See [license.txt](./license.txt)
+
+## Contributing
+
+Pull requests are welcome, if you have anything you think could be added.
+
+### Contributors
+
+Thanks to:
+
+[a2br](https://github.com/a2br)
 
 ## Other
 
