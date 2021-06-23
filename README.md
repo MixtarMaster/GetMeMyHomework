@@ -53,7 +53,7 @@ See [license.txt](./license.txt)
 
 ## Contributing
 
-Pull requests are welcome, if you have anything you think could be added.
+Pull requests are welcome, if you have anything you think could be added. Please use the prettier format settings.
 
 ### Contributors
 
