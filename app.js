@@ -1,14 +1,14 @@
 // --------------- imports ----------------
 
-const nodeSchedule = require("node-schedule");
-const ec = require("ecoledirecte.js");
-const nodemailer = require("nodemailer");
-const fs = require("fs");
+const nodeSchedule = require('node-schedule');
+const ec = require('ecoledirecte.js');
+const nodemailer = require('nodemailer');
+const fs = require('fs');
 
-const sec = require("./security");
+const sec = require('./security');
 
 //-------------- Taking settings into account -------------------
-const settings = JSON.parse(fs.readFileSync("settings.json"));
+const settings = JSON.parse(fs.readFileSync('settings.json'));
 
 //check that settings are as needed with security.js
 let settingsComply = sec.test();
@@ -21,14 +21,14 @@ if (settingsComply) {
     //set up "today" var
     let toDay = new Date();
 
-    let date = ("0" + toDay.getDate()).slice(-2);
-    let month = ("0" + (toDay.getMonth() + 1)).slice(-2);
+    let date = ('0' + toDay.getDate()).slice(-2);
+    let month = ('0' + (toDay.getMonth() + 1)).slice(-2);
     let year = toDay.getFullYear();
 
     let hour = toDay.getHours();
     let minute = toDay.getMinutes();
 
-    let today = year + "-" + month + "-" + date;
+    let today = year + '-' + month + '-' + date;
 
     // Create a new Session.
     const session = new ec.Session(
@@ -39,16 +39,16 @@ if (settingsComply) {
     // Bring your session to life!
     const account = async () => {
       await session.login().catch((err) => {
-        console.error("This login did not go well.");
+        console.error('This login did not go well.');
         console.log(err);
       });
     };
 
-    console.log("EcoleDirecte session open and up!");
+    console.log('EcoleDirecte session open and up!');
 
     // Get the homework due for a specific date as a simplified array + at t
     const homework = async () => {
-      await account.getHomework({ dates: today });
+      await account.getHomework({dates: today});
     };
 
     // No homework.length, defining it
@@ -58,17 +58,17 @@ if (settingsComply) {
     }
 
     //setting up both vars of content
-    let toBeDoneHtml = "";
-    var toBeDoneText = "";
-    let doneDuringTheLessonHtml = "";
-    var doneDuringTheLessonText = "";
+    let toBeDoneHtml = '';
+    var toBeDoneText = '';
+    let doneDuringTheLessonHtml = '';
+    var doneDuringTheLessonText = '';
 
     //getting the content and putting it in the previously created vars
     for (let i = 0; i < homeworkLength; i++) {
-      toBeDoneText += homework[i].subject.name + ":";
-      toBeDoneHtml += "<h3>" + homework[i].subject.name + "</h3>";
-      doneDuringTheLessonHtml += "<h3>" + homework[i].subject.name + "</h3>";
-      doneDuringTheLessonText += homework[i].subject.name + ":";
+      toBeDoneText += homework[i].subject.name + ':';
+      toBeDoneHtml += '<h3>' + homework[i].subject.name + '</h3>';
+      doneDuringTheLessonHtml += '<h3>' + homework[i].subject.name + '</h3>';
+      doneDuringTheLessonText += homework[i].subject.name + ':';
 
       if (homework[i].job !== undefined) {
         //some have no "job" object
@@ -82,7 +82,7 @@ if (settingsComply) {
       }
     }
 
-    console.log("EcoleDirecte side finished!");
+    console.log('EcoleDirecte side finished!');
 
     // ---- full message to be mailed setup ----
 
@@ -93,40 +93,40 @@ if (settingsComply) {
       text:
         "Voici l'update cours du" +
         date +
-        "/" +
+        '/' +
         month +
-        "/" +
+        '/' +
         year +
-        " de " +
+        ' de ' +
         hour +
-        ":" +
+        ':' +
         minute +
-        "Les contenus de seance:" +
+        'Les contenus de seance:' +
         doneDuringTheLessonText +
-        "Et pour les devoirs:" +
+        'Et pour les devoirs:' +
         toBeDoneText +
         "N'oublie pas d'aller verifier parfois quand meme! Bisous",
 
       html:
         '<h1 style="text-align: center; color: #4169E1">Voici l\'update cours du ' +
         date +
-        "/" +
+        '/' +
         month +
-        "/" +
+        '/' +
         year +
-        " de " +
+        ' de ' +
         hour +
-        ":" +
+        ':' +
         minute +
-        "</h1>" +
+        '</h1>' +
         '<h2 style="padding-left: 30px; color: green;">Les contenus de seance:</h2>' +
         doneDuringTheLessonHtml +
         '<h2 style="padding-left: 30px; color: green;">Et pour les devoirs:</h2>' +
         toBeDoneHtml +
-        "<h1 style=\"color: red\">N'oublie pas d'aller verifier parfois quand meme! Bisous</h1>",
+        '<h1 style="color: red">N\'oublie pas d\'aller verifier parfois quand meme! Bisous</h1>',
     };
 
-    console.log("Mail var up!");
+    console.log('Mail var up!');
 
     // -------------- node mail and protonmail side --------------------
 
@@ -146,7 +146,7 @@ if (settingsComply) {
         console.error("It appears we can't send the email.");
         console.log(err);
       } else {
-        console.log("Mail send! Here is the info!");
+        console.log('Mail send! Here is the info!');
         console.log(info);
       }
     });
@@ -156,17 +156,17 @@ if (settingsComply) {
 
   let scheduleMinutes = settings.scheduling.minute.toString();
   if (scheduleMinutes.length === 1) {
-    scheduleMinutes = "0" + scheduleMinutes;
+    scheduleMinutes = '0' + scheduleMinutes;
   }
 
-  const cronFormat = scheduleMinutes + " " + scheduleHour + " * * *";
+  const cronFormat = scheduleMinutes + ' ' + scheduleHour + ' * * *';
 
-  console.log("code ready, scheduling");
+  console.log('code ready, scheduling');
   const scheduleTheExecution = nodeSchedule.scheduleJob(cronFormat, doTheWork);
   console.log(
-    "You should receive your homework everyday at" +
+    'You should receive your homework everyday at' +
       scheduleHour +
-      ":" +
+      ':' +
       scheduleMinutes +
       " now, check your spam folder if you think you didn't receive it."
   );
