@@ -59,9 +59,9 @@ if (settingsComply) {
 
     //setting up both vars of content
     let toBeDoneHtml = '';
-    var toBeDoneText = '';
+    let toBeDoneText = '';
     let doneDuringTheLessonHtml = '';
-    var doneDuringTheLessonText = '';
+    let doneDuringTheLessonText = '';
 
     //getting the content and putting it in the previously created vars
     for (let i = 0; i < homeworkLength; i++) {
