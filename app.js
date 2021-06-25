@@ -9,9 +9,11 @@ const sec = require('./security');
 
 //-------------- Taking settings into account -------------------
 const settings = JSON.parse(fs.readFileSync('settings.json'));
+const laguageDir = './languagePack/' + settings.main.language + '.json';
+const languagePack = JSON.parse(fs.readFileSync(laguageDir));
 
 //check that settings are as needed with security.js
-let settingsComply = sec.test();
+let settingsComply = sec.test;
 
 if (settingsComply) {
   function doTheWork() {
@@ -91,39 +93,47 @@ if (settingsComply) {
       to: settings.daMail.to,
       subject: settings.daMail.subject,
       text:
-        "Voici l'update cours du" +
+        languagePack.daMail.part1 +
         date +
         '/' +
         month +
         '/' +
         year +
-        ' de ' +
+        languagePack.daMail.part2 +
         hour +
         ':' +
         minute +
-        'Les contenus de seance:' +
+        languagePack.daMail.part3 +
         doneDuringTheLessonText +
-        'Et pour les devoirs:' +
+        languagePack.daMail.part4 +
         toBeDoneText +
-        "N'oublie pas d'aller verifier parfois quand meme! Bisous",
+        languagePack.daMail.warning,
 
       html:
-        '<h1 style="text-align: center; color: #4169E1">Voici l\'update cours du ' +
+        '<h1 style="text-align: center; color: #4169E1">' +
+        languagePack.daMail.part1 +
+        '</h1>' +
         date +
         '/' +
         month +
         '/' +
         year +
-        ' de ' +
+        languagePack.daMail.part2 +
         hour +
         ':' +
         minute +
         '</h1>' +
-        '<h2 style="padding-left: 30px; color: green;">Les contenus de seance:</h2>' +
+        '<h2 style="padding-left: 30px; color: green;">' +
+        languagePack.daMail.part3 +
+        '</h2>' +
         doneDuringTheLessonHtml +
-        '<h2 style="padding-left: 30px; color: green;">Et pour les devoirs:</h2>' +
+        '<h2 style="padding-left: 30px; color: green;">' +
+        languagePack.daMail.part4 +
+        '</h2>' +
         toBeDoneHtml +
-        '<h1 style="color: red">N\'oublie pas d\'aller verifier parfois quand meme! Bisous</h1>',
+        '<h1 style="color: red">' +
+        languagePack.daMail.warning +
+        '</h1>',
     };
 
     console.log('Mail var up!');
@@ -164,7 +174,7 @@ if (settingsComply) {
   console.log('code ready, scheduling');
   const scheduleTheExecution = nodeSchedule.scheduleJob(cronFormat, doTheWork);
   console.log(
-    'You should receive your homework everyday at' +
+    'You should receive your homework everyday at ' +
       scheduleHour +
       ':' +
       scheduleMinutes +

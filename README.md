@@ -20,8 +20,8 @@ You will need to use a service to send emails through, I personnaly use [mailjet
 
 ## Usage
 
-Fill in the [settings.json](./settings.json) file with the relivent information.
-Then run
+Fill in the [settings.json](./settings.json) file with the relivent information. For languages, use the standard abreviation (French -> fr, English -> en, German -> de) only french and english are availabe, others might come later.
+Then run:
 
 ```bash
 node app.js

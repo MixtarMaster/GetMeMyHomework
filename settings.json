@@ -1,4 +1,7 @@
 {
+  "main": {
+    "language": "en"
+  },
   "ecoleDirecte": {
     "user": "",
     "pass": ""
