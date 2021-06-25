@@ -7,6 +7,15 @@ module.exports = {
     let errors = '';
     //EcoleDirecte settings
     if (
+      settings.main.language === '' ||
+      settings.main.language == undefined ||
+      typeof settings.main.language != 'string'
+    ) {
+      settingsComply = false;
+      errors +=
+        "\n No language setting found, make sure it is set and it's a recognised abreviation, see README";
+    }
+    if (
       settings.ecoleDirecte.user === '' ||
       settings.ecoleDirecte.user == undefined ||
       typeof settings.ecoleDirecte.user != 'string'
@@ -109,6 +118,6 @@ module.exports = {
       errors += '\n The minute you have set must be an int';
     }
 
-    return settingsComply;
+    return [settingsComply, errors];
   },
 };

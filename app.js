@@ -13,7 +13,8 @@ const laguageDir = './languagePack/' + settings.main.language + '.json';
 const languagePack = JSON.parse(fs.readFileSync(laguageDir));
 
 //check that settings are as needed with security.js
-let settingsComply = sec.test;
+const testResult = sec.test();
+const settingsComply = testResult[0];
 
 if (settingsComply) {
   function doTheWork() {
@@ -180,4 +181,6 @@ if (settingsComply) {
       scheduleMinutes +
       " now, check your spam folder if you think you didn't receive it."
   );
+} else {
+  console.error(testResult[1]);
 }
